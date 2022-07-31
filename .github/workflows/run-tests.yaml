@@ -1,0 +1,17 @@
+on:
+  repository_dispatch:
+    types: [ test-on-demand ]
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo preparing ...
+
+  test:
+    runs-on: ubuntu-latest
+    needs: prepare
+    steps:
+      - env:
+          MESSAGE: ${{ github.event.client_payload.message }}
+        run: "echo test message is: $MESSAGE"
