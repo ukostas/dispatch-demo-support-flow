@@ -16,3 +16,4 @@ jobs:
       - env:
           MESSAGE: ${{ github.event.client_payload.message }}
         run: "echo test message is: $MESSAGE"
+      - run: exit 1
