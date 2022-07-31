@@ -1,6 +1,7 @@
 on:
   repository_dispatch:
     types: [ test-on-demand ]
+  workflow_dispatch:
 
 jobs:
   prepare:
