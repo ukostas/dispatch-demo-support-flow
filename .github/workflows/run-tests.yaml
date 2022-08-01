@@ -27,6 +27,6 @@ jobs:
           ref: main
           path: dispatch-demo-support-flow
       - env:
-          MESSAGE: ${{ github.event.client_payload.message | github.event.inputs.message | inputs.message }}
+          MESSAGE: ${{ github.event.client_payload.message || github.event.inputs.message || inputs.message }}
         run: "echo test message is: $MESSAGE"
       - run: exit 1
