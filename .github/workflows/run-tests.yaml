@@ -16,7 +16,7 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
-    needs:   prepare-support-tools
+    needs: prepare-support-tools
     environment:
       name: test_environment
       url: https://github.com
@@ -28,5 +28,8 @@ jobs:
           path: dispatch-demo-support-flow
       - env:
           MESSAGE: ${{ github.event.client_payload.message || github.event.inputs.message || inputs.message }}
-        run: "echo test message is: $MESSAGE"
+        run: |
+          "echo github.event.client_payload.message message is: ${{github.event.client_payload.message}}"
+          "echo github.event.inputs.message message is: ${{github.event.inputs.message}}"
+          "echo inputs.message message is: ${{inputs.message}}"
       - run: exit 1
