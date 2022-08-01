@@ -29,7 +29,7 @@ jobs:
       - env:
           MESSAGE: ${{ github.event.client_payload.message || github.event.inputs.message || inputs.message }}
         run: |
-          "echo github.event.client_payload.message message is: ${{github.event.client_payload.message}}"
-          "echo github.event.inputs.message message is: ${{github.event.inputs.message}}"
-          "echo inputs.message message is: ${{inputs.message}}"
+          echo 'github.event.client_payload.message message is: ${{github.event.client_payload.message}}'
+          echo 'github.event.inputs.message message is: ${{github.event.inputs.message}}'
+          echo 'inputs.message message is: ${{inputs.message}}'
       - run: exit 1
