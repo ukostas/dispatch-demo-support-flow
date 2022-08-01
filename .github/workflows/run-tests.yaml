@@ -9,7 +9,7 @@ on:
         type: string
 
 jobs:
-  prepare:
+  prepare-support-tools:
     runs-on: ubuntu-latest
     steps:
       - run: echo preparing ...
@@ -18,6 +18,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: prepare
     steps:
+      - uses: actions/checkout@v3
+        with:
+          repository: ukostas/dispatch-demo-support-flow
+          ref: main
+          path: dispatch-demo-support-flow
       - env:
           MESSAGE: ${{ github.event.client_payload.message | github.event.inputs.message | inputs.message }}
         run: "echo test message is: $MESSAGE"
