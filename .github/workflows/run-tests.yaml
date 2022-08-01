@@ -2,6 +2,11 @@ on:
   repository_dispatch:
     types: [ test-on-demand ]
   workflow_dispatch:
+  workflow_call:
+    inputs:
+      message:
+        required: true
+        type: string
 
 jobs:
   prepare:
@@ -14,6 +19,6 @@ jobs:
     needs: prepare
     steps:
       - env:
-          MESSAGE: ${{ github.event.client_payload.message }}
+          MESSAGE: ${{ github.event.client_payload.message | github.event.inputs.message | inputs.message }}
         run: "echo test message is: $MESSAGE"
       - run: exit 1
