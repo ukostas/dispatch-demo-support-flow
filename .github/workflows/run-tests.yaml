@@ -16,7 +16,7 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
-    needs: prepare
+    needs:   prepare-support-tools
     environment:
       name: test_environment
       url: https://github.com
