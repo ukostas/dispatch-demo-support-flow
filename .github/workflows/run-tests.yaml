@@ -35,7 +35,7 @@ jobs:
                   message: 'message 3'
                 }
               ]
-            .filter(config => config.os.toLowerCase()==context.payload?.inputs?.message.toLowerCase())
+            .filter(config => config.message.toLowerCase()==context.payload?.inputs?.message.toLowerCase())
             console.log(devices)
             console.log(context)
             {include:devices}
