@@ -18,7 +18,7 @@ jobs:
         id: get-matrix
         with:
           script: |
-            const devices = [
+            const devices = {include:[
                 {
                   os:'android',
                   device:'device-1',
@@ -36,9 +36,10 @@ jobs:
                 }
               ]
             .filter(config => config.message.toLowerCase()==context.payload?.inputs?.message.toLowerCase())
+            }
             console.log(devices)
             console.log(context)
-            {include:devices}
+            return devices
 
   test:
     runs-on: ubuntu-latest
