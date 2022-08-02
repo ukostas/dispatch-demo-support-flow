@@ -21,11 +21,26 @@ jobs:
       name: test_environment
       url: https://github.com
     steps:
+      - uses: actions/github-script@v6
+        id: get-matrix
+        with:
+          script: |
+            const devices = [
+              {
+                os:'android',
+                device:'device-1'
+              },
+              {
+                os:'ios',
+                device:'device-2'
+              }
+            ].filter(config => config.os.toLowerCase()=='android')
+            console.log(devices)
+            console.log(context)
       - uses: actions/checkout@v3
         with:
           repository: ukostas/dispatch-demo-support-flow
           ref: main
-          path: dispatch-demo-support-flow
       - env:
           MESSAGE: ${{ github.event.client_payload.message || github.event.inputs.message || inputs.message }}
         run: |
