@@ -33,6 +33,11 @@ jobs:
                   os:'ios',
                   device:'device-3',
                   message: 'message 3'
+                },
+                {
+                  os:'ios',
+                  device:'device-4',
+                  message: 'message 3'
                 }
               ]
             .filter(config => config.message.toLowerCase()==context.payload?.inputs?.message.toLowerCase())
