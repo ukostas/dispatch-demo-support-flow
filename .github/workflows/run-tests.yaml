@@ -17,7 +17,6 @@ jobs:
       - uses: actions/github-script@v6
         id: get-matrix
         with:
-          result-encoding: string
           script: |
             const devices = {include:[
                 {
@@ -49,7 +48,7 @@ jobs:
       name: test_environment
       url: https://github.com
     strategy:
-      matrix: ${{ needs.prepare-device-matrix.outputs.matrix}}
+      matrix: ${{ fromJSON(needs.prepare-device-matrix.outputs.matrix) }}
     steps:
       - uses: actions/checkout@v3
         with:
