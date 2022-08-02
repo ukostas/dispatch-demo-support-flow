@@ -17,6 +17,7 @@ jobs:
       - uses: actions/github-script@v6
         id: get-matrix
         with:
+          result-encoding: string
           script: |
             const devices = {include:[
                 {
