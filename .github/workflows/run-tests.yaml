@@ -52,7 +52,6 @@ jobs:
     environment:
       name: test_environment
       url: https://github.com
-    if: matrix.message == inputs.message
     strategy:
       matrix:
         include:
@@ -68,6 +67,7 @@ jobs:
           - os: 'ios'
             device: 'device-4'
             message: 'message 3'
+    if: matrix.message == inputs.message
     steps:
       - uses: actions/checkout@v3
         with:
