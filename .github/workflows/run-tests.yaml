@@ -52,8 +52,22 @@ jobs:
     environment:
       name: test_environment
       url: https://github.com
+    if: ${{ matrix.message.toLowerCase()==inputs.message }}
     strategy:
-      matrix: ${{ fromJSON(needs.prepare-device-matrix.outputs.matrix) }}
+      matrix:
+        include:
+          - os: 'android'
+            device: 'device-1'
+            message: 'message 1'
+          - os: 'ios'
+            device: 'device-2'
+            message: 'message 2'
+          - os: 'ios'
+            device: 'device-3'
+            message: 'message 3'
+          - os: 'ios'
+            device: 'device-4'
+            message: 'message 3'
     steps:
       - uses: actions/checkout@v3
         with:
