@@ -52,7 +52,7 @@ jobs:
     environment:
       name: test_environment
       url: https://github.com
-    if: ${{ matrix.message.toLowerCase()==inputs.message }}
+    if: ${{ matrix.message == inputs.message }}
     strategy:
       matrix:
         include:
