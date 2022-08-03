@@ -69,7 +69,7 @@ jobs:
             message: 'message 3'
     env:
       message: ${{ matrix.message }}
-    if: env.message == inputs.message
+    if: ${{ env.message == inputs.message }}
     steps:
       - uses: actions/checkout@v3
         with:
