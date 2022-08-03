@@ -67,7 +67,9 @@ jobs:
           - os: 'ios'
             device: 'device-4'
             message: 'message 3'
-    if: matrix.message == inputs.message
+    env:
+      message: ${{ matrix.message }}
+    if: env.message == inputs.message
     steps:
       - uses: actions/checkout@v3
         with:
